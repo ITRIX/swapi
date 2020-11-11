@@ -1,0 +1,37 @@
+@import '../../../assets/fonts/variables';
+
+.character-container {
+    .page-header {
+        margin: 2.5rem 0rem;
+        text-align: center;
+        font-size: $font-xxxlg;
+    }
+    .card-row {
+        margin-bottom: 1rem;
+        .card-body {
+            cursor: pointer;
+            background: #BBBBBB 0% 0% no-repeat padding-box;
+            color: #10172C;
+            .card-title {
+                font-size: 25px;
+                font-family: $bold_font;
+                letter-spacing: 0px;
+            }
+            p {
+                font-size: $font-sm;
+                font-family: $regular_font;
+                letter-spacing: 0px;
+            }
+            a {
+                font-size: $font-xs;
+                font-family: $bold_font;
+                letter-spacing: 0px;
+            }
+        }
+        img {
+            height: 18rem;
+        }
+    }
+
+}
+

@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import './assets/fonts/variables';
+
+body {
+    font-family: $regular_font;
+    font-weight: $regular;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    opacity: 1;
+}

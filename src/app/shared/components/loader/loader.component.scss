@@ -1,0 +1,34 @@
+.layout-mask {
+    display: block; 
+    display: flex;
+    background-color: #24262e;
+    position: fixed;
+    z-index: 1000001;
+    height: 100%;
+    width: 100%;
+    opacity: 0.9;
+    cursor: pointer;
+
+    .imgContainer {
+        margin: auto;
+    }
+    @keyframes rotation {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(359deg);
+        }
+      }
+    
+      .rotate {
+        width: 2.5rem;
+        animation: rotation 2s infinite linear;
+      }
+    
+      .label {
+        color: white;
+        display: block;
+      }
+
+}

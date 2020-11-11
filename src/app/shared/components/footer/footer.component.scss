@@ -1,0 +1,11 @@
+@import '../../../../assets/fonts/variables';
+.footer {
+    position: relative;
+    border-top: 1px solid #10172C26;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    .container {
+        padding: 1.5rem 2rem;
+        color: #BBBBBB;
+        font-size: $font-sm;
+    }
+}

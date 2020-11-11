@@ -1,0 +1,28 @@
+@import '../../../../assets/fonts/variables';
+
+.character-detail-container {
+    .header-items {
+        margin: 3rem 0 4rem 0;
+        text-align: center;
+        .item1 {
+            border-bottom: 1px solid #10172C;
+            font-size: $font-xxlg;
+        }
+        .item2 {
+            font-size: $font-xxxlg;
+        }
+    }
+    .imgCls img{
+        height: 370px;
+        width: 100%;
+    }
+
+    .links-container {
+        margin-bottom: 2rem;
+        .badge {
+            margin: .2rem .2rem;
+            padding: .5rem;
+            cursor: pointer;
+        }
+    }
+}

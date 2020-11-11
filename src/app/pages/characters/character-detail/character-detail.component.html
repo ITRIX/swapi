@@ -1,0 +1,43 @@
+<div class="character-detail-container" *ngIf="characterDetails">
+    <div class="header-items">
+        <span class="item1">Characterdeatils</span>
+        <div class="item2">{{characterDetails.name}}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h5><b>Details</b></h5>
+            <p><b>Größe:</b> {{characterDetails.height}}</p>
+            <p><b>Gewicht:</b> {{characterDetails.mass}}</p>
+            <p><b>Haarfarbe:</b> {{characterDetails.hair_color}}</p>
+            <p><b>Augenfarbe:</b> {{characterDetails.eye_color}}</p>
+            <p><b>Geburtsjahr:</b> {{characterDetails.birth_year}}</p>
+            <p><b>Geschlecht:</b> {{characterDetails.gender}}</p>
+
+            <div class="row links-container">
+                <div class="col-md-3">
+                    <p><b>Heimatplanet:</b></p>
+                </div>
+                <div class="col-md-9">
+                    <span class="badge badge-secondary" (click)="showDetails('PLANETS', characterDetails.homeworld);">Planet</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6 imgCls">
+            <img src="../../../../assets/images/character-tile.png" alt="">
+        </div>
+    </div>
+
+
+    <div class="row links-container">
+        <div class="col-md-12">
+            <h5><b>Filme:</b></h5>
+        </div>
+        <div class="col-md-12">
+            <ng-container *ngFor="let films of characterDetails.films; let idx = index;">
+            <span class="badge badge-secondary" (click)="showDetails('FILMS', films);">film {{idx+1}}</span>
+            </ng-container>
+        </div>
+    </div>
+</div>

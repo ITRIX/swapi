@@ -1,0 +1,28 @@
+@import '../../../../assets/fonts/variables';
+
+.app-header {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-bottom: 1px solid #10172C26;
+    font-size: $font-sm;
+
+    a {
+        color: #10172C;
+        margin-left: 1rem;
+    }
+
+    input {
+        font-size: $font-md;
+    }
+    .active {
+        span {
+            border-bottom: 1px solid #10172C;
+            padding-bottom: 2px;
+            opacity: 1;
+        }
+    }
+}
+
+#nav-toggle-button span {
+    background-color: black;
+}

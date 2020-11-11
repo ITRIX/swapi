@@ -1,0 +1,46 @@
+<div class="planet-detail-container" *ngIf="planetDetails">
+    <div class="header-items">
+        <span class="item1">Planetendeatils</span>
+        <div class="item2">{{planetDetails.name}}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h5><b>Details</b></h5>
+            <p><b>Rotation Period:</b> {{planetDetails.rotation_period}}</p>
+            <p><b>Population:</b> {{planetDetails.population}}</p>
+            <p><b>Population:</b> {{planetDetails.population}}</p>
+            <p><b>Terrain:</b> {{planetDetails.terrain}}</p>
+            <p><b>Gravity:</b> {{planetDetails.gravity}}</p>
+            <p><b>Orbital Period:</b> {{planetDetails.orbital_period}}</p>
+            <p><b>Diameter:</b> {{planetDetails.diameter}}</p>
+            <p><b>Climate:</b> {{planetDetails.climate}}</p>
+        </div>
+        <div class="col-md-6 imgCls">
+            <img src="../../../../assets/images/planets.png" alt="">
+        </div>
+    </div>
+
+
+    <div class="row links-container">
+        <div class="col-md-12">
+            <h5><b>Filme:</b></h5>
+        </div>
+        <div class="col-md-12">
+            <ng-container *ngFor="let films of planetDetails.films; let idx = index;">
+            <span class="badge badge-secondary" (click)="showDetails('FILMS', films);">film {{idx+1}}</span>
+            </ng-container>
+        </div>
+    </div>
+
+    <div class="row links-container">
+        <div class="col-md-12">
+            <h5><b>Charaktere:</b></h5>
+        </div>
+        <div class="col-md-12">
+            <ng-container *ngFor="let planet of planetDetails.residents; let idx = index;">
+            <span class="badge badge-secondary" (click)="showDetails('CHARACTER', planet);">planet {{idx+1}}</span>
+            </ng-container>
+        </div>
+    </div>
+</div>
