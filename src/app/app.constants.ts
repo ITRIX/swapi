@@ -4,6 +4,12 @@ export const resource = {
     FILMS: '/films/',
     CHARACTER: '/characters/',
     PLANETS: '/planets/'
+};
+
+export const ResourceName = {
+    FILMS: 'films',
+    CHARACTER: 'people',
+    PLANETS: 'planets'
 }
 
 export const resourceUrl = {

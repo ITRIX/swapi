@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Planets } from 'src/app/models/planets';
+import { HttpService } from 'src/app/shared/services/http.service';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class PlanetService {
 
   configUrl = environment.api_URL;
   constructor(
-    private http: HttpClient
+    private http: HttpService
   ) { }
 
   /**

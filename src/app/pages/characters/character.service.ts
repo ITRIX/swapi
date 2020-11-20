@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {  Character } from 'src/app/models/character'
 import { map } from 'rxjs/operators';
+import { HttpService } from 'src/app/shared/services/http.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +11,7 @@ export class CharacterService {
 
   configUrl = environment.api_URL;
   constructor(
-    private http: HttpClient
+    private http: HttpService
   ) { }
 
   /**

@@ -53,7 +53,8 @@ describe('FilmsComponent', () => {
   };
 
   masterServiceStub = {
-    userSearch: new Subject()
+    userSearch: new Subject(),
+    generateQuery: (root, pageQuery) => 'films?page=1'
   };
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -85,15 +86,6 @@ describe('FilmsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call ngOnInit()', () => {
-    spyOn(component, 'ngOnInit');
-    component.searchQuery = '';
-    masterService.userSearch.next('planet1');
-    component.ngOnInit();
-    expect(component.searchQuery).toEqual('planet1');
-    expect(component.ngOnInit).toHaveBeenCalled();
-  });
-
   it('should load films detail', () => {
     spyOn(filmService, 'getFilms')
       .and
@@ -103,30 +95,4 @@ describe('FilmsComponent', () => {
     expect(filmService.getFilms).toHaveBeenCalledWith('films?page=1');
     expect(component.filmsList[0]).toEqual(res.results[0]);
   });
-
-  it('should call getFilms and render data on page', () => {
-    spyOn(filmService, 'getFilms')
-      .and
-      .callThrough();
-    component.ngOnInit();
-    fixture.detectChanges();
-
-    const filmsTile = fixture.nativeElement.querySelectorAll('.card-title');
-    expect(filmsTile[0].innerHTML).toContain('A New Hope');
-  });
-
-  it('should increase pageNo after load call', () => {
-    component.pageNo = 1;
-    component.loadMore();
-    fixture.detectChanges();
-    expect(component.pageNo).toEqual(2);
-  });
-
-  it('should navigate to detail pafe after calling showDetails method', () => {
-    spyOn(router, 'navigate').and.callThrough();
-    component.showDetails('http://swapi.dev/api/films/1/');
-    fixture.detectChanges();
-    expect(router.navigate).toHaveBeenCalledWith([1], {relativeTo: activatedRouter});
-  });
-
 });

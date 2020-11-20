@@ -1,0 +1,28 @@
+@import '../../../../assets/fonts/variables';
+.card-row {
+    margin-bottom: 1rem;
+    .card-body {
+        cursor: pointer;
+        background: #BBBBBB 0% 0% no-repeat padding-box;
+        color: #10172C;
+        .card-title {
+            font-size: 25px;
+            font-family: $bold_font;
+            letter-spacing: 0px;
+        }
+        p {
+            font-size: $font-sm;
+            font-family: $regular_font;
+            letter-spacing: 0px;
+        }
+        a {
+            font-size: $font-xs;
+            font-family: $bold_font;
+            letter-spacing: 0px;
+            
+        }
+        .extra-height {
+            height: 2rem;
+        }
+    }
+}

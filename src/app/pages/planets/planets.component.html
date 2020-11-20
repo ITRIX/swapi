@@ -1,19 +1,15 @@
 <div class="planets-container">
     <h1 class="page-header">Planeten</h1>
-
-    <div class="row card-container" infiniteScroll [infiniteScrollDistance]=scrollDistance [infiniteScrollThrottle]=throttle
-    scrollWindow=false (scrolled)="loadMore()">
-        <div class="col-md-4 card-row" *ngFor="let planet of planetList">
-            <div class="card" (click)="showDetails(planet.url);">
-                <img src="../../../assets/images/planets.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">{{planet.name}}</h5>
-                  <p>Rotation Period: {{planet.rotation_period}}</p>
-                  <p>Population: {{planet.population}}</p>
-                  <p>Erscheinungsdatum: {{planet.created | date}}</p>
-                  <a>Mehr Informationen....</a>
-                </div>
-              </div>
-        </div>
-    </div>
+    <app-list-grid [(listData)]="planetList" (loadData)="fetchPlanets($event);">
+      <ng-template #listview let-item>
+          <img src="../../../assets/images/planets.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{item?.name}}</h5>
+            <p>Rotation Period: {{item?.rotation_period}}</p>
+            <p>Population: {{item?.population}}</p>
+            <p>Erscheinungsdatum: {{item?.created | date}}</p>
+            <a>Mehr Informationen....</a>
+          </div>
+      </ng-template>
+    </app-list-grid>
 </div>

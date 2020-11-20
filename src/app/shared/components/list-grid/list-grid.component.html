@@ -1,0 +1,8 @@
+<div class="row card-container" infiniteScroll [infiniteScrollDistance]=scrollDistance [infiniteScrollThrottle]=throttle
+    scrollWindow=false (scrolled)="loadMore()">
+    <div class="col-md-4 card-row" *ngFor="let item of listData">
+        <div class="card" (click)="showDetails(item?.url);">
+        <ng-container *ngTemplateOutlet="titleTemplate; context: { $implicit: item }"></ng-container>
+        </div>
+    </div>
+</div>

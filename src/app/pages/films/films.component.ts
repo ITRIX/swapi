@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FilmService } from './film.service';
-import {extractId, generateQuery } from '../../utils/helpers'
 import { ActivatedRoute, Router } from '@angular/router';
-import { resourceUrl } from 'src/app/app.constants';
-import { MasterService } from 'src/app/shared/services/master.service';
+import { ResourceName } from 'src/app/app.constants';
 import { Subscription } from 'rxjs';
 import { Films } from 'src/app/models/films';
+import { defaultPagerQuery, PagerQuery } from 'src/app/models/pager';
+import { MasterService } from 'src/app/shared/services/master.service';
 
 @Component({
   selector: 'app-films',
@@ -14,10 +14,6 @@ import { Films } from 'src/app/models/films';
 })
 export class FilmsComponent implements OnInit, OnDestroy {
   filmsList: Films[] = [];
-  pageNo: number;
-  throttle = 300;
-  searchQuery: string;
-  scrollDistance = 1;
   private allSubscriptions: Subscription[] = [];
 
   constructor(
@@ -27,16 +23,7 @@ export class FilmsComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.pageNo = 1;
-    this.fetchFilms();
-    this.searchQuery = '';
-    this.allSubscriptions.push(
-      this.masterService.userSearch.subscribe((res: string) => {
-        this.filmsList = [];
-        this.searchQuery = res;
-        this.fetchFilms();
-      })
-    );
+    this.fetchFilms(defaultPagerQuery);
   }
 
 /**
@@ -44,35 +31,13 @@ export class FilmsComponent implements OnInit, OnDestroy {
  *
  * @description - fetch all the films of selected page.
  */
-  fetchFilms(): void {
-    const searchQuery = generateQuery('films', this.pageNo, this.searchQuery);
+  fetchFilms(pageQuery: PagerQuery): void {
+    const searchQuery = this.masterService.generateQuery(ResourceName.FILMS, pageQuery);
     this.allSubscriptions.push(
       this.filmService.getFilms(searchQuery).subscribe((data: any) => {
         this.filmsList.push(...data);
-      }, (error: any) => {
-      })
-    );
+      }));
   }
-
-/**
- * loadMore
- *
- * @description - Triggers when user scroll down the page.
- */
-loadMore(): void {
-  this.pageNo += 1;
-  this.fetchFilms();
-}
-
-/**
- * showDetails
- *
- * @description - get id and navigate to detail page
- */
-showDetails(url: string) {
-  const id = extractId(resourceUrl.FILMS, url);
-  this.router.navigate([id], { relativeTo: this.activatedRoute });
-}
 
 ngOnDestroy() {
   this.allSubscriptions.forEach(s => s && s.unsubscribe && s.unsubscribe());

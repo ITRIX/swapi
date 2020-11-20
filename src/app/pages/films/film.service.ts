@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Films } from 'src/app/models/films';
+import { HttpService } from 'src/app/shared/services/http.service';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -11,7 +12,7 @@ import { environment } from 'src/environments/environment';
 export class FilmService {
   configUrl = environment.api_URL;
   constructor(
-    private http: HttpClient
+    private http: HttpService
   ) { }
 
   /**

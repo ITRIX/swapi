@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { resource, resourceUrl } from 'src/app/app.constants';
 import { Character } from 'src/app/models/character';
-import { extractId } from 'src/app/utils/helpers';
+import { MasterService } from 'src/app/shared/services/master.service';
 import { CharacterService } from '../character.service';
 
 @Component({
@@ -15,6 +15,7 @@ export class CharacterDetailComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRouter: ActivatedRoute,
+    private masterService: MasterService,
     private filmService: CharacterService
   ) { }
 
@@ -33,7 +34,7 @@ export class CharacterDetailComponent implements OnInit {
  * @description - get id and navigate to detail page
  */
   showDetails(root: string, url: string): void {
-    const id = extractId(resourceUrl[root], url);
+    const id = this.masterService.extractId(resourceUrl[root], url);
     this.router.navigate([resource[root] + id]);
   }
 

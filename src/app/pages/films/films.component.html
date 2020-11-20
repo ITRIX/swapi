@@ -1,19 +1,15 @@
 <div class="films-container">
-    <h1 class="page-header">Filme</h1>
-
-    <div class="row card-container" infiniteScroll [infiniteScrollDistance]=scrollDistance [infiniteScrollThrottle]=throttle
-    scrollWindow=false (scrolled)="loadMore()">
-        <div class="col-md-4 card-row" *ngFor="let film of filmsList">
-            <div class="card" (click)="showDetails(film.url);">
-                <img src="../../../assets/images/tile.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">{{film.title}}</h5>
-                  <p>Director: {{film.director}}</p>
-                  <p class="extra-height">Produzenten: {{film.producer}}</p>
-                  <p>Erscheinungsdatum: {{film.created | date}}</p>
-                  <a>Mehr Informationen....</a>
-                </div>
-              </div>
+  <h1 class="page-header">Filme</h1>
+  <app-list-grid [(listData)]="filmsList" (loadData)="fetchFilms($event);">
+    <ng-template #listview let-item>
+        <img src="../../../assets/images/tile.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{item?.title}}</h5>
+          <p>Director: {{item?.director}}</p>
+          <p class="extra-height">Produzenten: {{item?.producer}}</p>
+          <p>Erscheinungsdatum: {{item?.created | date}}</p>
+          <a>Mehr Informationen....</a>
         </div>
-    </div>
+    </ng-template>
+  </app-list-grid>
 </div>

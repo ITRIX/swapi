@@ -8,6 +8,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { LoaderComponent } from './components/loader/loader.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpRequestInterceptor } from './services/http-request-interceptor';
+import { ListGridComponent } from './components/list-grid/list-grid.component';
 
 const sharedModules = [
   CommonModule,
@@ -20,12 +21,12 @@ const sharedModules = [
 const sharedComponents = [
   HeaderComponent,
   FooterComponent,
-  LoaderComponent
+  LoaderComponent,
+  ListGridComponent
 ];
 
-
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, LoaderComponent],
+  declarations: [HeaderComponent, FooterComponent, LoaderComponent, ListGridComponent],
   imports: [...sharedModules],
   exports: [...sharedModules, ...sharedComponents],
   providers: [
